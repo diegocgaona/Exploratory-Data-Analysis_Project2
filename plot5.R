@@ -13,7 +13,7 @@ edataveh <- edatabalt[grep("Veh|Vehicles", ignore.case = TRUE, edatabalt$Short.N
 edatasumm <- aggregate(Emissions ~ year, edataveh, sum)
 ## initiate png graphic device with width = 720 and height = 500
 png("plot5.png", width = 720, height = 500)
-## Plot with bars, by TONS of emissions
+## Plot with bars
 p <- ggplot(edatasumm, aes(x = factor(year), y = Emissions)) ## Initializes ggplot object
 p <- p + geom_bar(stat = "identity") + ylab("Emissions") +  xlab("Year") ## Use bar and show labels
 p <- p + theme(axis.title = element_text(face="bold", size=12)) ## Change the axis labels style

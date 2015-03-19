@@ -1,5 +1,5 @@
 ## Coursera Exploration Data Analysis Course Assignment 2
-## Load ggplo2
+## Load ggplot2
 require("ggplot2")
 ## Load and merge data. Be patient, this will take some time.
 SCC <- readRDS("Source_Classification_Code.rds")
