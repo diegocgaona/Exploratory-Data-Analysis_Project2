@@ -10,21 +10,14 @@ rm(list = c("NEI","SCC")); gc()
 ## Subset for only coal combustion-related sources (including charcoal)
 ## I used the "Short.Name" column to subset the data.
 edatacoal <- edata[grep("coal|charcoal", ignore.case = TRUE, edata$Short.Name),]
-
 ## Summarize the data emisssions per year
 edatasumm <- aggregate(Emissions ~ year, edatacoal, sum)
-
-png("plot4.png") ## initiate png graphic device
+## initiate png graphic device with width = 720 and height = 500
+png("plot4.png", width = 720, height = 500)
 ## Plot with bars, by TONS of emissions
-
-p <- ggplot(edatasumm, aes(x = factor(year), y = Emissions/10^3))
-p + geom_bar(stat = "identity")
-p + labs(title="Emissions from coal combustion-related sources in USA")
-
-qplot(year, Emissions,, data = edatasumm, color = "black", 
-      geom = "bar", main = "Emissions")
-
-qplot(year, Emissions, data = NEIBALTtypesum, facets = . ~ type, geom = c("point", "line"), 
-      ylab = "Emissions per type", main = "Emissions from coal combustion-related sources in USA")
-
+p <- ggplot(edatasumm, aes(x = factor(year), y = Emissions/10^3)) ## Initializes ggplot object
+p <- p + geom_bar(stat = "identity") + ylab("Emissions (TON)") +  xlab("Year") ## Use bar and show labels
+p <- p + theme(axis.title = element_text(face="bold", size=12)) ## Change the axis labels style
+p <- p + theme(plot.title = element_text(size = rel(2))) ## Change the title style
+p + ggtitle("Emissions from coal combustion-related in USA by year") ## Show the title
 dev.off()  ## Close the device (png)
