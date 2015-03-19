@@ -5,7 +5,7 @@ NEIBALT <- subset(readRDS("summarySCC_PM25.rds",), fips == "24510")
 ## Summarize the data emisssions per year
 NEIBALTsum <- aggregate(Emissions ~ year,NEIBALT, sum)
 
-png("plot1.png") ## initiate png graphic device
+png("plot2.png") ## initiate png graphic device
 
 barplot((NEIBALTsum$Emissions),
         names.arg = edatasum$year,

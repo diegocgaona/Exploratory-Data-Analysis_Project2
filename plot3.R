@@ -7,12 +7,9 @@ NEIBALTtypesum <- aggregate(Emissions ~ year + type,NEIBALT, sum)
 
 require("ggplot2")
 
-png("plot1.png") ## initiate png graphic device
+png("plot3.png") ## initiate png graphic device
 ## Plot with lines separated by type color
 qplot(x = year, y = Emissions, data = NEIBALTtypesum, color = type, 
       geom = c("point", "line"), main = "Emissions per type in Baltimore")
-
-qplot(year, Emissions, data = NEIBALTtypesum, facets = . ~ type, geom = c("point", "line"), 
-      ylab = "Emissions per type", main = "Emissions per type in Baltimore")
 
 dev.off()  ## Close the device (png)
