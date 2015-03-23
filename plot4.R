@@ -14,7 +14,7 @@ edatacoal <- edata[grep("coal|charcoal", ignore.case = TRUE, edata$Short.Name),]
 edatasumm <- aggregate(Emissions ~ year, edatacoal, sum)
 ## initiate png graphic device with width = 720 and height = 500
 png("plot4.png", width = 720, height = 500)
-## Plot with bars, by TONS of emissions
+## Plot with bars, by kilo TONS of emissions
 p <- ggplot(edatasumm, aes(x = factor(year), y = Emissions/10^3)) ## Initializes ggplot object
 p <- p + geom_bar(stat = "identity") + ylab("Emissions (TON)") +  xlab("Year") ## Use bar and show labels
 p <- p + theme(axis.title = element_text(face="bold", size=12)) ## Change the axis labels style
